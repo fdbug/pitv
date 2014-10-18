@@ -13,7 +13,8 @@ NJOB=4
 LOCAL_DIR=$(readlink -f ./local)
 mkdir -p ${LOCAL_DIR}
 
-# Cross-compiler tools.
+# Cross-compiler tools. Latest version can be downloaded at:
+# github.com/raspberrypi/tools
 TOOL_DIR=$(readlink -f ./tools)
 TOOL_BIN_DIR=${TOOL_DIR}/arm-bcm2708/arm-bcm2708-linux-gnueabi/bin
 TOOL_CC=${TOOL_BIN_DIR}/arm-bcm2708-linux-gnueabi-gcc
