@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Start aria2 server.
-if [[ -e /storage/local/start-aria2.sh ]]; then
-    sh /storage/local/start-aria2.sh
-fi
+# Fix out-of-memory issue on OpenELEC.
+swapon ~/bin/swapfile
+# Start aria2 daemon.
+sleep 5; ~/bin/aria2c 1>~/bin/aria2.log 2>~/bin/aria2.err &
