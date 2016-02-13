@@ -1,0 +1,13 @@
+diff --git a/Makefile.libretro b/Makefile.libretro
+index cc3b4b2..fef60a6 100644
+--- a/Makefile.libretro
++++ b/Makefile.libretro
+@@ -249,7 +249,7 @@ else ifneq (,$(findstring armv,$(platform)))
+ 	TARGET := $(TARGET_NAME)_libretro.$(EXT)
+ 	SHARED := -shared -Wl,--no-undefined
+ 	fpic := -fPIC
+-	CC = gcc
++	# CC = gcc
+ ifneq (,$(findstring cortexa8,$(platform)))
+ 		CFLAGS += -marm -mcpu=cortex-a8
+ 		ASFLAGS += -mcpu=cortex-a8
