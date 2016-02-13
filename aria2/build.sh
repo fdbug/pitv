@@ -65,27 +65,28 @@ make install
 
 cd ${CWD}
 
+# To support HTTPS, you can compile openssl-0.9.8zg
+# TODO: Add compile instruction for openssl.
+
 # aria2
 rm -rf aria2*
-wget http://downloads.sourceforge.net/aria2/aria2-1.18.8.tar.xz ./
+wget http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.8/aria2-1.18.8.tar.xz ./
 tar xJf aria2*.tar.xz
+
 cd aria2*/
 ./configure \
     --host=arm-bcm2708-linux-gnueabi \
     --build=${ARCH}-slackware-linux \
     --disable-nls \
-    --disable-ssl \
     --disable-epoll \
     --without-gnutls \
-    --without-openssl \
+    --with-openssl \
     --without-sqlite3 \
     --without-libxml2 \
-    --with-libz --with-libz-prefix=${LOCAL_DIR} \
-    --with-libexpat --with-libexpat-prefix=${LOCAL_DIR} \
-    --with-libcares --with-libcares-prefix=${LOCAL_DIR} \
+    --enable-shared=no \
     --prefix=${LOCAL_DIR} \
-    CXXFLAGS="-Os -g" \
-    CFLAGS="-Os -g" \
+    CXXFLAGS="-Os -I${LOCAL_DIR}/include" \
+    CFLAGS="-Os -I${LOCAL_DIR}/include" \
     LDFLAGS="-L${LOCAL_DIR}/lib" \
     PKG_CONFIG_LIBDIR="${LOCAL_DIR}/lib/pkgconfig" \
     ARIA2_STATIC=yes
